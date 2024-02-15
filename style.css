@@ -1,0 +1,57 @@
+.board {
+	border: 0.125rem solid slateblue;
+	/* первый элемент - рисуем границу с помощью линии */
+	width: fit-content;
+	/* устанавливаем ширину доски */
+	margin: 0 auto;
+	/* границы сверху-снизу по нулям, 
+	auto - доска выравнена по центру */
+	padding: 1rem;
+	/* font-size: 3rem; */
+}
+
+.row {
+	/* background-color: yellow; */
+	/* height: 1rem; */
+	display: flex;
+	/* способ отображения данных для класса .row */
+	flex-flow: row nowrap;
+	/* переворачиваем доску */
+}
+/* переварачиваем нижнюю часть доски (не лучшее решение) */
+/* .row:nth-of-type(2) {
+	display: flex;
+	flex-flow: row-reverse nowrap;
+} */
+.row:last-child {
+	padding-bottom: 1rem;
+
+}
+
+.row::before {
+	/* */
+	content: attr(data-row);
+	align-self: center;
+	padding-right: 0.5rem;
+}
+.row:last-child > .cell::after {
+	content: attr(data-column);
+	position: relative;
+	top: calc(100% + 0.5ch);
+	left: calc(50% - 0.5ch);
+	text-align: center;
+}
+
+/* клеточка размер */
+.cell {
+	width: 3rem;
+	height: 3rem;
+}
+
+.cell-light {
+	background-color: ivory;
+}
+
+.cell-dark {
+	background-color: rebeccapurple;
+}
